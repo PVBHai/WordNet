@@ -60,43 +60,6 @@ ui.add_head_html('''
 # ------------------------------------------------------------------------------------
 
 
-'''# Hàm để tìm kiếm
-def search_word():
-    # Lấy kết quả của thanh tìm kiếm
-    word = search_bar.value
-    synsets = lexicon.synsets(word)
-    label.text = f'Từ {word} tổng cộng {len(synsets)} nghĩa'
-
-    if not synsets:
-        mermaid_code.append("No synsets found.")
-    else:
-        for synset in synsets:
-            build_mermaid_tree(synset)
-    
-    mermaid_diagram.content = 'graph TD\n' + '\n'.join(mermaid_code)
-
-    # Update the tree with new data
-    tree_nodes = build_tree(synsets)
-
-    # Display tree
-    #tree = ui.tree(tree_nodes, label_key='id', on_select=lambda e: ui.notify(e.value))
-    @ui.refreshable
-    def draw_tree(tree_nodes):    
-        ui.tree(tree_nodes, label_key='id', on_select=lambda e: ui.notify(e.value))
-        
-    draw_tree(tree_nodes)
-    #return tree_nodes
-
-# Hàm để biểu diễn các cây
-def build_tree(synsets, relative=''):
-    result = []
-    for i, ss in enumerate(synsets):
-        hypernyms = ss.hypernyms()
-        children = [{'id': h.lemmas()[0]} for h in hypernyms] if hypernyms else []
-        dictionary = {'id': ss.lemmas()[0], 'children': children}
-        result.append(dictionary)
-    return result'''
-
 
 # Hàm để lấy danh sách các quan hệ (relationship) của một synset
 def get_relationships(synset, relationship_type):
@@ -113,8 +76,10 @@ def get_relationships(synset, relationship_type):
 
 
 # Hàm giải mã lemmas
-def process_lemmas(lemmas):
+def process_lemmas(lemmas, recursive_level=None):
     result_list = ''
+    if recursive_level:
+        result_list += f'{recursive_level + 1}-->'
     for i, lemma in enumerate(lemmas):
         result_list += lemma.replace(' ', '_')
         # Thêm dấu ,
@@ -154,7 +119,6 @@ def build_mermaid_list(synset, relationship_type, parent_id=None, recursive_leve
         build_mermaid_list(rel_synset, relationship_type, synset_id, recursive_level + 1, max_recursive, check_duplicate_list)
 
 
-
 # Hàm để xây dựng biểu đồ cây bằng cú pháp Mermaid bằng kết quả của hàm build_mermaid_list
 def build_mermaid_tree(synsets, relationship_type, max_recursive=1):
     # Khởi tạo mảng kết quả
@@ -172,6 +136,97 @@ def build_mermaid_tree(synsets, relationship_type, max_recursive=1):
     # Cập nhật mermaid_code
     for item in result_list:
         mermaid_code.append(item)
+
+
+# Hàm để xây tree
+def build_tree_list(synsets, relationship_type, recursive_level=0, max_recursive=1):
+    # Dừng đệ quy
+    if recursive_level >= max_recursive:
+        return []
+    if not synsets:
+        return []
+
+    # Khởi tạo kết quả
+    children_list = []
+
+    # Lặp qua tất cả synset
+    for synset in synsets:
+        # Khởi tạo mảng chứa kết quả (tạm)
+        node = {}
+
+        # Lấy các quan hệ
+        relations = get_relationships(synset, relationship_type)
+
+        # Gán id node và định nghĩa
+        node['id'] = process_lemmas(synset.lemmas(), recursive_level)
+        node['description'] = synset.definition()
+
+        # Gọi đệ quy để lấy các node con
+        node['children'] = build_tree_list(relations, relationship_type, recursive_level + 1, max_recursive)
+
+        # Cập nhật danh sách các node con (sau khi xong đệ quy)
+        children_list.append(node)
+    
+    # Trả về kết quả
+    return children_list
+    
+
+# Hàm xây tree
+def build_tree(synsets, relationship_type, max_recursive=1):
+    tree_nodes = build_tree_list(synsets=synsets, relationship_type=relationship_type, max_recursive=max_recursive)
+
+    # Nếu không có node nào được tạo ra, thêm một node thông báo
+    if not tree_nodes:
+        tree_nodes = [{"id": "No synsets found", "children": []}]
+
+    return tree_nodes
+
+
+# Hàm search_word (chỉ hiển thị tree) --> CÒN LỖI
+"""
+# Hàm để xây tree
+def build_tree_list(synsets, relationship_type, recursive_level=0, max_recursive=1):
+    # Dừng đệ quy
+    if recursive_level >= max_recursive:
+        return []
+    if not synsets:
+        return []
+
+    # Khởi tạo kết quả
+    children_list = []
+
+    # Lặp qua tất cả synset
+    for synset in synsets:
+        # Khởi tạo mảng chứa kết quả (tạm)
+        node = {}
+
+        # Lấy các quan hệ
+        relations = get_relationships(synset, relationship_type)
+
+        # Gán id node và định nghĩa
+        node['id'] = process_lemmas(synset.lemmas())
+        node['description'] = synset.definition()
+
+        # Gọi đệ quy để lấy các node con
+        node['children'] = build_tree_list(relations, relationship_type, recursive_level + 1, max_recursive)
+
+        # Cập nhật danh sách các node con (sau khi xong đệ quy)
+        children_list.append(node)
+    
+    # Trả về kết quả
+    return children_list
+    
+
+# Hàm xây cây
+def build_tree(synsets, relationship_type, max_recursive=1):
+    tree_nodes = build_tree_list(synsets=synsets, relationship_type=relationship_type, max_recursive=max_recursive)
+
+    # Nếu không có node nào được tạo ra, thêm một node thông báo
+    if not tree_nodes:
+        tree_nodes = [{"id": "No synsets found", "children": []}]
+
+    return tree_nodes
+"""
 
 
 # Hàm thực thi khi bấm nút
