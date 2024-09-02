@@ -15,7 +15,7 @@ from nicegui import ui
 wn.config.data_directory = './data'
 
 # Tải dữ liệu nếu chưa có
-LEXICON = ['odenet', 'omw-en']
+LEXICON = ['odenet', 'oewn:2023']
 lexicon_name = LEXICON[1]
 if not wn.lexicons():
     wn.download(lexicon_name)
@@ -195,10 +195,16 @@ def search_word():
 
     # Tính toán các synset
     synsets = lexicon.synsets(word, pos='n')
-    label.text = f'Từ {word} tổng cộng {len(synsets)} nghĩa'
 
-    tree_nodes = build_tree(synsets, relationship_type, max_recursive)
-    tree = ui.tree(tree_nodes, label_key='id')
+    RESULT.clear()
+    with RESULT:
+        label.text = f'Từ {word} tổng cộng {len(synsets)} nghĩa'
+
+        # Reset dữ liệu
+        #ui.clear()
+
+        tree_nodes = build_tree(synsets, relationship_type, max_recursive)
+        tree = ui.tree(tree_nodes, label_key='id')
 
 
 
@@ -218,7 +224,7 @@ with ui.row():
 
     # Nhập giới hạn đệ quy
     #recursive_input = ui.input(label='Max Recursive Depth', value='3')
-    recursive_input = ui.knob(value=3, min=1, max=10, step=1, show_value=True).cclasses('big-knob')
+    recursive_input = ui.knob(value=3, min=1, max=10, step=1, show_value=True).classes('big-knob')
     #ui.label('Chọn độ sâu tìm kiếm')
 
 # Nút tìm kiếm
@@ -231,7 +237,7 @@ label = ui.label('Kết quả sẽ được hiển thị ở đây').classes('bi
 '''# Tree
 tree_nodes = []
 tree = ui.tree(tree_nodes, label_key='id', on_select=lambda e: ui.notify(e.value))'''
-
+RESULT = ui.column()
 
 # Khởi chạy giao diện
 #ui.run()
