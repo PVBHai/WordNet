@@ -5,6 +5,9 @@ from wn_editor.editor import LexiconEditor
 # FRONT-END
 from nicegui import ui
 
+# OS DIRECTORY
+import os
+
 
 # ------------------------------------------------------------------------------------
 #                                   Cấu hình
@@ -17,6 +20,9 @@ wn.config.data_directory = './data'
 # Tải dữ liệu nếu chưa có
 LEXICON = ['odenet', 'omw-en']
 lexicon_name = LEXICON[1]
+
+if not os.path.exists('./data'):
+    os.mkdir('./data')
 if not wn.lexicons():
     wn.download(lexicon_name)
 
@@ -261,11 +267,11 @@ with ui.row():
     search_bar = ui.input(label='Tìm kiếm từ', placeholder='Nhập từ bạn cần tìm vào đây').classes('big-input')
 
     # Lựa chọn quan hệ
-    relationship_select = ui.select(['hypernym', 'hyponym', 'meronym', 'holonym'], label='Loại quan hệ').classes('big-input')
+    relationship_select = ui.select(['hypernym', 'hyponym', 'meronym', 'holonym'], value='hypernym', label='Loại quan hệ').classes('big-input')
 
     # Nhập giới hạn đệ quy
     #recursive_input = ui.number(label='Độ sâu tìm kiếm', value=0).props('clearable').classes('big-input')
-    recursive_input = ui.knob(value=3, min=1, max=20, step=1, show_value=True).classes('big-knob')
+    recursive_input = ui.knob(value=1, min=1, max=20, step=1, show_value=True).classes('big-knob')
 
 
 with ui.row():
