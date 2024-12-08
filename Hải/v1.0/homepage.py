@@ -1,3 +1,8 @@
+"""
+    WORDNET BROWSER by HẢI.PVB
+    Version: 1.0
+"""
+
 # WORDNET
 import wn
 from wn_editor.editor import LexiconEditor

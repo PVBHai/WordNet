@@ -1,6 +1,15 @@
+"""
+    WORDNET BROWSER by HẢI.PVB
+    Version: coding ver
+"""
+
 # WORDNET
-import wn
-from wn_editor.editor import LexiconEditor
+#import wn
+#from wn_editor.editor import LexiconEditor
+
+# NLTK (WORDNET)
+import nltk
+from nltk.corpus import wordnet as wn
 
 # FRONT-END
 from nicegui import ui
@@ -14,20 +23,28 @@ import os
 # ------------------------------------------------------------------------------------
 
 
-# Cấu hình thư mục
-wn.config.data_directory = './data'
+# # Cấu hình thư mục
+# wn.config.data_directory = './data'
 
-# Tải dữ liệu nếu chưa có
-LEXICON = ['odenet', 'omw-en']
-lexicon_name = LEXICON[1]
+# # Tải dữ liệu nếu chưa có
+# LEXICON = ['odenet', 'omw-en31:1.4', 'omw-en']
+# lexicon_name = LEXICON[1]
 
-if not os.path.exists('./data'):
-    os.mkdir('./data')
-if not wn.lexicons():
-    wn.download(lexicon_name)
+# # Tạo thư mục
+# if not os.path.exists('./data'):
+#     os.mkdir('./data')
 
-# Khởi tạo database
-lexicon = wn.Wordnet(lexicon=lexicon_name)
+# # Kiểm tra lexicon có tồn tại hay chưa
+# available_lexicons = [lex.id for lex in wn.lexicons()]
+# if lexicon_name not in available_lexicons:
+#     wn.download(lexicon_name)
+
+# # Khởi tạo database
+# lexicon = wn.Wordnet(lexicon=lexicon_name)
+
+
+# Tải lexicon (NLTK - WORNET)
+nltk.download('wordnet')
 
 # Thêm CSS tùy chỉnh để phóng to các thành phần giao diện
 ui.add_head_html('''
@@ -47,6 +64,22 @@ ui.add_head_html('''
         width: 100vw;  /* Chiều rộng 100% viewport */
         height: 100vh; /* Chiều cao 100% viewport */
         overflow: auto; /* Đảm bảo có thể cuộn */
+    }
+    .scalable-mermaid svg {
+        width: 100%;             /* Full width of the parent container */
+        height: 100%;            /* Set height explicitly to avoid scaling issues */
+        overflow: auto;          /* Allow scrolling if needed */
+        display: flex;           /* Ensure proper alignment */
+        justify-content: center; /* Center content horizontally */
+        align-items: center;     /* Center content vertically */
+    }
+    .scalable-mermaid svg {
+        width: 100%;        /* SVG adjusts to the width of the container */
+        height: auto;       /* Maintains aspect ratio */
+    }
+    .small-slider {
+        width: 200px; /* Điều chỉnh kích thước chiều rộng */
+        height: 20px; /* Điều chỉnh chiều cao */
     }
 </style>
 ''')
@@ -70,7 +103,6 @@ view_mode = None
 # ------------------------------------------------------------------------------------
 
 
-
 # Hàm để lấy danh sách các quan hệ (relationship) của một synset
 def get_relationships(synset, relationship_type):
     if relationship_type == 'hypernym':
@@ -78,9 +110,9 @@ def get_relationships(synset, relationship_type):
     elif relationship_type == 'hyponym':
         return synset.hyponyms()
     elif relationship_type == 'meronym':
-        return synset.meronyms()
+        return synset.part_meronyms() + synset.substance_meronyms()
     elif relationship_type == 'holonym':
-        return synset.holonyms()
+        return synset.part_holonyms() + synset.substance_holonyms()
     else:
         return []
 
@@ -91,8 +123,7 @@ def process_lemmas(lemmas, recursive_level=None):
     if recursive_level is not None:
         result_list += f'Lv{recursive_level + 1}. '
     for i, lemma in enumerate(lemmas):
-        result_list += lemma.replace(' ', '_')
-        # Thêm dấu '/'
+        result_list += lemma.name()
         if (i + 1) < len(lemmas):
             result_list += '/'
     return result_list
@@ -100,32 +131,20 @@ def process_lemmas(lemmas, recursive_level=None):
 
 # Hàm để xây dựng biểu đồ cây bằng cú pháp Mermaid với giới hạn đệ quy
 def build_mermaid_list(synset, relationship_type, parent_id=None, recursive_level=0, max_recursive=1, result_list=[]):
-    # Dừng đệ quy nếu đã đạt đến mức đệ quy tối đa
     if recursive_level >= max_recursive:
         return  
 
-    synset_id = synset.id.replace('.', '_')
+    synset_id = synset.name().replace('.', '_')
     if parent_id:
-        # Thêm một liên kết từ parent_id đến synset_id trong mã Mermaid
-        parent_lemmas = process_lemmas(wn.synset(parent_id).lemmas())
-        synset_lemmas = process_lemmas(wn.synset(synset_id).lemmas())
-        # Nếu quan hệ hyponym và quan hệ meronym thì: synset --> relation
-        if relationship_type == 'hyponym' or relationship_type == 'meronym':
-            result_list.append(f'{parent_lemmas} --> {synset_lemmas}')
-        # Nếu quan hệ hypernym và quan hệ relation thì: relation --> synset
-        else: 
-            result_list.append(f'{synset_lemmas} --> {parent_lemmas}')
+        parent_lemmas = f'{parent_id}-#-' + process_lemmas(wn.synset(parent_id).lemmas())
+        synset_lemmas = f'{synset_id}-#-' + process_lemmas(synset.lemmas())
+        result_list.append(f'{parent_lemmas} --> {synset_lemmas}')
     else:
-        # Bắt đầu một node mới cho synset_id
-        synset_lemmas = process_lemmas(wn.synset(synset_id).lemmas())
+        synset_lemmas = f'{synset_id}-#-' + process_lemmas(synset.lemmas())
         result_list.append(f'{synset_lemmas}["{synset_lemmas}"]')
 
-    # Lấy danh sách các quan hệ của synset hiện tại
-    relationships = get_relationships(synset, relationship_type)  
-
-    # Lấy danh sách các quan hệ của synset hiện tại
+    relationships = get_relationships(synset, relationship_type)
     for relation_synset in relationships:
-        # Đệ quy xây dựng cây cho mỗi quan hệ tìm được, tăng recursive_level
         build_mermaid_list(relation_synset, relationship_type, synset_id, recursive_level + 1, max_recursive, result_list)
 
 
@@ -133,6 +152,25 @@ def build_mermaid_list(synset, relationship_type, parent_id=None, recursive_leve
 def build_mermaid_tree(synsets, relationship_type, max_recursive=1):
     # Khởi tạo mảng lưu dữ liệu tạo ra
     result_list = []
+
+    # Tìm max_recursive thích hợp để Fix lỗi "Hiển thị MERMAID" (Chỉ cho HYPERNYM)
+    if relationship_type == 'hypernym':
+        min_level = 20
+        max_level = 0
+        for synset in synsets:
+            # Tìm độ sâu của synset có path ngắn nhất đến "entity"
+            hyper_path = synset.hypernym_paths()
+            for path in hyper_path:
+                if len(path) + 1 < min_level:
+                    min_level = len(path) + 1
+                if len(path) + 1 > max_level:
+                    max_level = len(path) + 1
+
+        # Cập nhật max_recursive 
+        # Nếu có 1 nhánh nào đó chạy tới entity (max_recursive > min_level)
+        # => Gán giá trị max_recursive bằng max_level (để chạy từ entity xuống)
+        if max_recursive >= min_level:
+            max_recursive = max_level
 
     # Gọi hàm để tạo Mermaid code
     for synset in synsets:
@@ -154,45 +192,27 @@ def build_mermaid_tree(synsets, relationship_type, max_recursive=1):
 
 # Hàm để xây tree
 def build_tree_list(synsets, relationship_type, recursive_level=0, max_recursive=1):
-    # Dừng đệ quy
     if recursive_level >= max_recursive:
         return []
     if not synsets:
         return []
 
-    # Khởi tạo kết quả
     children_list = []
-
-    # Lặp qua tất cả synset
     for synset in synsets:
-        # Khởi tạo mảng chứa kết quả (tạm)
         node = {}
-
-        # Lấy các quan hệ
         relations = get_relationships(synset, relationship_type)
-
-        # Gán id node và định nghĩa
-        node['id'] = process_lemmas(synset.lemmas(), recursive_level)
+        node['id'] = process_lemmas(synset.lemmas(), recursive_level) + f' (id: {synset.name()})'
         node['description'] = synset.definition()
-
-        # Gọi đệ quy để lấy các node con
         node['children'] = build_tree_list(relations, relationship_type, recursive_level + 1, max_recursive)
-
-        # Cập nhật danh sách các node con (sau khi xong đệ quy)
         children_list.append(node)
-    
-    # Trả về kết quả
     return children_list
-    
+
 
 # Hàm xây cây
 def build_tree(synsets, relationship_type, max_recursive=1):
     tree_nodes = build_tree_list(synsets=synsets, relationship_type=relationship_type, max_recursive=max_recursive)
-
-    # Nếu không có node nào được tạo ra, thêm một node thông báo
     if not tree_nodes:
         tree_nodes = [{"id": "No synsets found", "children": []}]
-
     return tree_nodes
 
 
@@ -200,37 +220,25 @@ def build_tree(synsets, relationship_type, max_recursive=1):
 def update_card(word, relationship_type, max_recursive):
     global card, view_mode
     
-    # Nếu card hiện tại đã tồn tại, xóa nó trước khi tạo mới
     if card is not None:
         card.delete()
         card = None
 
-    # Lấy các synset
-    synsets = lexicon.synsets(word, pos='n')
+    synsets = wn.synsets(word, pos='n')
 
-    # Tạo card mới
     with ui.card().classes('full-screen-card') as card:
-        # Tạo và hiển thị Tree
-        if view_mode == 'Text':
-            # Hiển thị tree
+        if view_mode == 'Danh sách':
             tree_nodes = build_tree(synsets, relationship_type, max_recursive)
             tree = ui.tree(tree_nodes, label_key='id', on_select=lambda e: ui.notify(e.value))
-
-            # Thêm các thuộc tính
             tree.add_slot('default-header', '''
             <span :props="props"> <strong>{{ props.node.id }}</strong></span>
             ''')
             tree.add_slot('default-body', '''
                 <span :props="props">Định nghĩa: "{{ props.node.description }}"</span>
             ''')
-
-        # Tạo và hiển thị Mermaid
         else:
-            # Hiển thị mermaid
             mermaid_code = build_mermaid_tree(synsets, relationship_type, max_recursive)
-            mermaid_diagram = ui.mermaid('graph TD\n').classes('full-screen-mermaid')
-
-            # Cập nhật dữ liệu của mermaid
+            mermaid_diagram = ui.mermaid('graph TD\n').classes('full-screen-mermaid').classes('scalable-mermaid')
             mermaid_diagram.content = 'graph TD\n' + '\n'.join(mermaid_code)
             mermaid_diagram.update()
 
@@ -252,7 +260,6 @@ def search_word():
 
     # In ra kết quả
     update_card(word, relationship_type, max_recursive)
-    
 
 
 # ------------------------------------------------------------------------------------
@@ -260,32 +267,15 @@ def search_word():
 # ------------------------------------------------------------------------------------
 
 
-
-# Tạo giao diện với thanh tìm kiếm và nút tìm kiếm
 with ui.row():
-    # Thanh tìm kiếm
     search_bar = ui.input(label='Tìm kiếm từ', placeholder='Nhập từ bạn cần tìm vào đây').classes('big-input')
-
-    # Lựa chọn quan hệ
     relationship_select = ui.select(['hypernym', 'hyponym', 'meronym', 'holonym'], value='hypernym', label='Loại quan hệ').classes('big-input')
 
-    # Nhập giới hạn đệ quy
-    #recursive_input = ui.number(label='Độ sâu tìm kiếm', value=0).props('clearable').classes('big-input')
-    recursive_input = ui.knob(value=1, min=1, max=20, step=1, show_value=True).classes('big-knob')
-
-
 with ui.row():
-    # Toggle chuyển chế độ giữa tree và mermaid
-    #   - Text = ui.tree
-    #   - Graph = ui.mermaid
-    toggle_button = ui.toggle(['Text', 'Graph'], value='Text', on_change=search_word)
+    toggle_button = ui.toggle(['Danh sách', 'Biểu đồ'], value='Danh sách', on_change=lambda: search_word())
+    search_button = ui.button('Tìm kiếm', on_click=lambda: search_word())
+    ui.label('Độ sâu tìm kiếm')
+    recursive_input = ui.slider(min=1, max=20, step=1, value=3, on_change=lambda: search_word()).props('label-always').classes('small-slider')
 
-    # Nút tìm kiếm
-    search_button = ui.button('Tìm kiếm', on_click=search_word)
-
-
-# Thanh kết quả
-label = ui.label('Kết quả sẽ được hiển thị ở đây').classes('big-input')
-
-# Khởi chạy giao diện
+ui.label('Kết quả sẽ được hiển thị ở đây').classes('big-input')
 ui.run(title='WordNet App')
