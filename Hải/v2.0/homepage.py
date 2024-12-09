@@ -1,6 +1,6 @@
 """
     WORDNET BROWSER by HẢI.PVB
-    Version: coding ver
+    Version: 2.0 (NLTK - WORDNET)
 """
 
 # WORDNET
@@ -44,9 +44,12 @@ import os
 
 
 # Tải lexicon (NLTK - WORNET)
-if '/Users/haiphan/Documents/GitHub/WordNet/Hải/nltk_data' not in nltk.data.path:
-    nltk.data.path.append('/Users/haiphan/Documents/GitHub/WordNet/Hải/nltk_data')
-nltk.download('wordnet', download_dir='/Users/haiphan/Documents/GitHub/WordNet/Hải/nltk_data')
+data_path = '/Users/haiphan/Documents/GitHub/WordNet/Hải/nltk_data'
+if data_path not in nltk.data.path:
+    nltk.data.path.append(data_path)
+if not os.path.exists(data_path):
+    os.mkdir(data_path)
+nltk.download('wordnet', download_dir=data_path)
 
 # Thêm CSS tùy chỉnh để phóng to các thành phần giao diện
 ui.add_head_html('''
