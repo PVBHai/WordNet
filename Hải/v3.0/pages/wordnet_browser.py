@@ -27,6 +27,7 @@ if word:
     
     if view_mode == 'Dạng chữ':
         st.subheader("🌲 Dạng chữ (Tree View)")
+        st.markdown(get_tree_view_css(), unsafe_allow_html=True)
         html = render_details_tree(nested_dict)
         st.markdown(html, unsafe_allow_html=True)
 
