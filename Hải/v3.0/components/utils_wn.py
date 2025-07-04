@@ -1,8 +1,24 @@
 import nltk
 from nltk.corpus import wordnet as wn
+import sqlite3
+
+# ✅ Đặt thật sớm
+_orig_connect = sqlite3.connect
+def connect_threadsafe(*args, **kwargs):
+    kwargs["check_same_thread"] = False
+    return _orig_connect(*args, **kwargs)
+sqlite3.connect = connect_threadsafe
+
+import os
+import wn
+
+# Data
+if not os.path.exists('./data'):
+    os.mkdir('./data')
 
 # Tải dữ liệu WordNet nếu chưa có
-nltk.download('wordnet')
+# nltk.download('wordnet')
+wn.download('oewn:2024')
 
 def get_relationships(synset, relationship_type):
     if relationship_type == 'hypernym':

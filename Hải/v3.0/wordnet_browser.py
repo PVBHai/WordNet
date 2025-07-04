@@ -1,12 +1,31 @@
+# Streamlit
 import streamlit as st
+
+# Components
 from components.utils_wn import *
 from components.utils_search import *
 from components.utils_display import *
 # from components.class_Node import *
 from components.class_NodeFamily import *
-from nltk.corpus import wordnet as wn
 import streamlit.components.v1 as components
 
+# WordNet
+# from nltk.corpus import wordnet as wn
+import wn
+# from wn_editor.editor import LexiconEditor
+
+# Resolve save thread of wn library
+import os
+import sqlite3
+
+# # ✅ Override đúng cách để tránh lỗi thread
+# _orig_connect = sqlite3.connect
+# def connect_threadsafe(*args, **kwargs):
+#     kwargs["check_same_thread"] = False
+#     return _orig_connect(*args, **kwargs)
+# sqlite3.connect = connect_threadsafe
+
+# ------------- UI ------------- #
 st.set_page_config(layout="wide")
 st.title("🌐 Trình tra cứu WordNet")
 
@@ -23,9 +42,11 @@ with col3:
 word = st.text_input("🔍 Nhập từ cần tìm:")
 
 if word:
-    synsets = wn.synsets(word, pos='n')
+    lexicon = wn.Wordnet('oewn:2024')
+    synsets = lexicon.synsets(word, pos='n')
 
     if not synsets:
+        st.text('Từ bạn tìm không tồn tại !!!')
         pass
 
     else:

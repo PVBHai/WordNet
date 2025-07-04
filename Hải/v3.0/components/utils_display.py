@@ -14,7 +14,7 @@ def render_details_tree(data, level=0):
     <div class="tree-line"></div>
     <details>
         <summary>
-            <strong>Lv{node._level + 1}</strong>. {node._lemmas} <strong>({node._synset.name()})</strong>
+            <strong>Lv{node._level + 1}</strong>. {node._lemmas} <strong>({node._synset.id})</strong>
         </summary>
         <div class="node-extra">📖 Định nghĩa: {node._definition}</div>
         <div class="node-extra">💬 Ví dụ: {node._example}</div>
@@ -90,7 +90,8 @@ def nodefamily_to_cytoscape_elements(nodes, parent_id=None, elements=None, seen=
         added_edges = set()
 
     for node in nodes:
-        synset_id = node._synset.name()
+        # synset_id = node._synset.name()
+        synset_id = node._synset.id
 
         # Gán ID duy nhất cho node theo synset name
         if synset_id in seen:
@@ -98,7 +99,8 @@ def nodefamily_to_cytoscape_elements(nodes, parent_id=None, elements=None, seen=
         else:
             node_id = f"n{len(seen)}"
             seen[synset_id] = node_id
-            lemmas_label = ', '.join([l.name() for l in node._synset.lemmas()])
+            # lemmas_label = ', '.join([l.name() for l in node._synset.lemmas()])
+            lemmas_label = ', '.join(node._synset.lemmas())
             label = f"{synset_id}\n{lemmas_label}"
             elements.append({
                 "data": {"id": node_id, "label": label},
