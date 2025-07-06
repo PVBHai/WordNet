@@ -18,6 +18,7 @@ if not os.path.exists('./data'):
 
 # Tải dữ liệu WordNet nếu chưa có
 # nltk.download('wordnet')
+wn.config.data_directory = './data'
 wn.download('oewn:2024')
 
 def get_relationships(synset, relationship_type):
