@@ -20,7 +20,7 @@ if not os.path.exists('./data'):
 # nltk.download('wordnet')
 wn.config.data_directory = './data'
 # wn.download('oewn:2024')
-wn.add('./vietnet_food_single.xml')
+wn.add('./vietnet_food (thủ công).xml')
 
 def get_relationships(synset, relationship_type):
     if relationship_type == 'hypernym':

@@ -42,7 +42,7 @@ with col3:
 word = st.text_input("🔍 Nhập từ cần tìm:")
 
 if word:
-    lexicon = wn.Wordnet('vietnet-food-single:1.0')
+    lexicon = wn.Wordnet('vietnet-food:1.0')
     synsets = lexicon.synsets(word)
 
     if not synsets:
