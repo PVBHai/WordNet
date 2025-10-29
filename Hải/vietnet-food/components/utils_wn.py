@@ -12,15 +12,35 @@ sqlite3.connect = connect_threadsafe
 import os
 import wn
 
-# Data
-if not os.path.exists('./data'):
-    os.mkdir('./data')
+# Get the directory of the current file (components/)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Get the parent directory (vietnet-food/)
+parent_dir = os.path.dirname(current_dir)
+
+# Data directory path
+data_dir = os.path.join(parent_dir, 'data')
+if not os.path.exists(data_dir):
+    os.mkdir(data_dir)
+
+# XML file path
+xml_file = os.path.join(parent_dir, 'vietnet_food (thủ công).xml')
 
 # Tải dữ liệu WordNet nếu chưa có
 # nltk.download('wordnet')
-wn.config.data_directory = './data'
+wn.config.data_directory = data_dir
 # wn.download('oewn:2024')
-wn.add('./vietnet_food (thủ công).xml')
+
+# Only add if file exists and hasn't been loaded yet
+if os.path.exists(xml_file):
+    try:
+        # Check if already loaded
+        lexicons = wn.lexicons()
+        if 'vietnet-food:1.0' not in [lex.id for lex in lexicons]:
+            wn.add(xml_file)
+    except Exception as e:
+        print(f"Warning: Could not load WordNet data: {e}")
+else:
+    print(f"Warning: XML file not found at {xml_file}")
 
 def get_relationships(synset, relationship_type):
     if relationship_type == 'hypernym':
