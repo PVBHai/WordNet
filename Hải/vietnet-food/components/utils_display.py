@@ -8,16 +8,20 @@ def render_details_tree(data, level=0):
 
     for node in data:
         has_children = isinstance(node.children, list) and bool(node.children)
+        examples_str = ", ".join(node._example) if isinstance(node._example, list) and node._example else "không có"
+        ili_display = node._ili
+        
+        # New format: (<level>) {<lemmas>} [<synset_id> (<ili>)]: <definition> (vd: <examples>)
+        # Styling: lemmas = bold, synset_id = bold+italic, examples = italic, others = normal
+        display_text = f"({node._level - 1}) {{<strong>{node._lemmas}</strong>}} [<em>{node._synset.id}</em> ({ili_display})]: <strong>{node._definition}</strong> (vd: <em>{examples_str}</em>)"
 
         html += f'''
 <div class="tree-node" style="margin-left:{indent_px}px;">
     <div class="tree-line"></div>
     <details>
         <summary>
-            <strong>Lv{node._level + 1}</strong>. {node._lemmas} <strong>({node._synset.id})</strong>
+            {display_text}
         </summary>
-        <div class="node-extra">📖 Định nghĩa: {node._definition}</div>
-        <div class="node-extra">💬 Ví dụ: {node._example}</div>
 '''.strip()
 
         if has_children:
@@ -49,7 +53,7 @@ def get_tree_view_css():
     .tree-node summary {
         list-style: none;
         cursor: pointer;
-        font-weight: bold;
+        font-weight: normal;
         padding-left: 5px;
     }
 
@@ -101,9 +105,30 @@ def nodefamily_to_cytoscape_elements(nodes, parent_id=None, elements=None, seen=
             seen[synset_id] = node_id
             # lemmas_label = ', '.join([l.name() for l in node._synset.lemmas()])
             lemmas_label = ', '.join(node._synset.lemmas())
-            label = f"{synset_id}\n{lemmas_label}"
+            
+            # Format examples
+            examples_str = ", ".join(node._example) if isinstance(node._example, list) and node._example else "không có"
+            
+            # Get ILI
+            ili_display = node._ili if node._ili else ""
+            
+            # Create label: (synset_id) lemmas
+            label = f"({synset_id})\n{lemmas_label}"
+            
+            # Create tooltip content
+            tooltip = f"Mục từ: {lemmas_label}\\nSynset ID: {synset_id} ({ili_display})\\nĐịnh nghĩa: {node._definition}\\nVí dụ: {examples_str}"
+            
             elements.append({
-                "data": {"id": node_id, "label": label},
+                "data": {
+                    "id": node_id, 
+                    "label": label,
+                    "synset_id": synset_id,
+                    "lemmas": lemmas_label,
+                    "definition": node._definition,
+                    "examples": examples_str,
+                    "ili": ili_display,
+                    "tooltip": tooltip
+                },
                 "classes": "wordnode"
             })
 
@@ -134,9 +159,27 @@ def render_cytoscape(elements):
     <html>
     <head>
         <script src="https://unpkg.com/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
+        <style>
+            #tooltip {{
+                display: none;
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.85);
+                color: white;
+                padding: 12px;
+                border-radius: 6px;
+                font-size: 13px;
+                max-width: 350px;
+                z-index: 9999;
+                pointer-events: none;
+                line-height: 1.6;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }}
+        </style>
     </head>
     <body>
         <div id="cy" style="width: 100%; height: 500px;"></div>
+        <div id="tooltip"></div>
         <script>
             var cy = cytoscape({{
                 container: document.getElementById('cy'),
@@ -164,8 +207,8 @@ def render_cytoscape(elements):
                             'width': 'label',
                             'height': 'label',
                             'text-wrap': 'wrap',
-                            'text-max-width': 80,
-                            'grabbable': false
+                            'text-max-width': 100,
+                            'font-weight': 'normal'
                         }}
                     }},
                     {{
@@ -184,7 +227,34 @@ def render_cytoscape(elements):
                 userPanningEnabled: true,
                 userZoomingEnabled: true,
                 boxSelectionEnabled: true,
-                autoungrabify: true
+                autoungrabify: false
+            }});
+            
+            // Tooltip functionality
+            var tooltip = document.getElementById('tooltip');
+            
+            cy.on('mouseover', 'node', function(evt) {{
+                var node = evt.target;
+                var data = node.data();
+                
+                // Create formatted tooltip content
+                var tooltipContent = 
+                    '• Mục từ: ' + data.lemmas + '\\n' +
+                    '• Synset ID: ' + data.synset_id + (data.ili ? ' (' + data.ili + ')' : '') + '\\n' +
+                    '• Định nghĩa: ' + data.definition + '\\n' +
+                    '• Ví dụ: ' + data.examples;
+                
+                tooltip.innerHTML = tooltipContent;
+                tooltip.style.display = 'block';
+            }});
+            
+            cy.on('mousemove', 'node', function(evt) {{
+                tooltip.style.left = evt.originalEvent.pageX + 15 + 'px';
+                tooltip.style.top = evt.originalEvent.pageY + 15 + 'px';
+            }});
+            
+            cy.on('mouseout', 'node', function(evt) {{
+                tooltip.style.display = 'none';
             }});
         </script>
     </body>

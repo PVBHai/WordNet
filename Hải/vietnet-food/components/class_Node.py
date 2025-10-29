@@ -5,6 +5,7 @@ class Node:
         self._lemmas = ', '.join(lemma for lemma in synset.lemmas())
         self._definition = synset.definition()
         self._example = synset.examples()
+        self._ili = synset.ili.id if synset.ili else ''
         self._level = recursive_level
         self._children = []
 
