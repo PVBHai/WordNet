@@ -12,7 +12,7 @@
       <Sense id="vietnet-food-00000000-1" synset="vietnet-food-99999999-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999999-n" ili="oewn-00021445-n">
-      <Definition> thứ có chứa chất dinh dưỡng và có thể tiêu hóa được, dùng để nuôi sống con người và động vật, nói chung.</Definition>
+      <Definition>thứ có chứa chất dinh dưỡng và có thể tiêu hóa được, dùng để nuôi sống con người và động vật, nói chung</Definition>
       <Example> chế biến thức ăn</Example>
       <Example> cỏ là nguồn thức ăn chính của trâu bò</Example>
       <SynsetRelation relType="hyponym" target="vietnet-food-00000008-n" />
@@ -739,7 +739,7 @@
       <Sense id="vietnet-food-99999899-1" synset="vietnet-food-99999912-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999912-n" ili="">
-      <Definition>bong bóng cá hay bì lợn phơi khô, nướng, sấy hoặc rán phồng, dùng làm thức ăn </Definition>
+      <Definition>bong bóng cá hay bì lợn phơi khô, nướng, sấy hoặc rán phồng, dùng làm thức ăn</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999974-n"/>
     </Synset>
     <!-- *******{Lv4. trân châu}******** -->
@@ -3031,7 +3031,7 @@
       <Sense id="vietnet-food-99999998-1" synset="vietnet-food-99999998-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999998-n" ili="">
-      <Definition> thứ, món, loại, nói chung [thường nói về đồ ăn uống]</Definition>
+      <Definition>thứ, món, loại, nói chung [thường nói về đồ ăn uống]</Definition>
       <Example>đồ ăn thức uống</Example>
       <Example>mùa nào thức ấy</Example>
       <Example>"Trong phiên chợ tết (...) những hàng được bày nhiều nhất trong mọi gian, phần nhiều lại là những thức xa xỉ." (Nguyễn Tuân; 32)</Example>
@@ -3067,7 +3067,7 @@
       <Sense id="vietnet-food-99999997-1" synset="vietnet-food-99999997-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999997-n" ili="oewn-07572999-n">
-      <Definition> từ chỉ từng kiểu thức ăn đã được chế biến theo một cách thức nhất định</Definition>
+      <Definition>từ chỉ từng kiểu thức ăn đã được chế biến theo một cách thức nhất định</Definition>
       <Example>món cá chép om dưa</Example>
       <Example>thực đơn gồm có chín món</Example>
       <Example>thích ăn món khoai tây rán</Example>
@@ -4946,7 +4946,7 @@
       <Sense id="vietnet-food-99999995-1" synset="vietnet-food-99999996-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999996-n" ili="">
-      <Definition> quả cây dùng để ăn [nói khái quát]</Definition>
+      <Definition>quả cây dùng để ăn [nói khái quát]</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
       <SynsetRelation relType="hyponym" target="vietnet-food-99999619-n"/>
       <SynsetRelation relType="hyponym" target="vietnet-food-99999618-n"/>
@@ -5775,7 +5775,7 @@
       <Sense id="vietnet-food-99999993-1" synset="vietnet-food-99999995-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999995-n" ili="">
-      <Definition> chất lỏng không màu, không mùi và tồn tại trong tự nhiên ở ao hồ, sông biển, v.v.</Definition>
+      <Definition>chất lỏng không màu, không mùi và tồn tại trong tự nhiên ở ao hồ, sông biển, v.v.</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
       <SynsetRelation relType="hyponym" target="vietnet-food-99999537-n"/>
       <SynsetRelation relType="hyponym" target="vietnet-food-99999534-n"/>
@@ -5901,7 +5901,7 @@
       <Sense id="vietnet-food-99999992-1" synset="vietnet-food-99999993-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999993-n" ili="">
-      <Definition> búp hoặc lá cây chè đã sao, đã chế biến, để pha nước uống</Definition>
+      <Definition>búp hoặc lá cây chè đã sao, đã chế biến, để pha nước uống</Definition>
       <Example>pha trà uống trà trà sen (trà ướp hương sen)</Example>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
       <SynsetRelation relType="hyponym" target="vietnet-food-99999528-n"/>
@@ -6021,7 +6021,7 @@
       <Sense id="vietnet-food-99999991-1" synset="vietnet-food-99999992-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999992-n" ili="">
-      <Definition> lá trầu đã têm, dùng để nhai cùng với cau cho thơm miệng, đỏ môi</Definition>
+      <Definition>lá trầu đã têm, dùng để nhai cùng với cau cho thơm miệng, đỏ môi</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
     <!-- *******{Lv2. rượu bia}******** -->
@@ -6030,7 +6030,7 @@
       <Sense id="vietnet-food-99999990-1" synset="vietnet-food-99999991-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999991-n" ili="">
-      <Definition> rượu và bia [nói khái quát]</Definition>
+      <Definition>rượu và bia [nói khái quát]</Definition>
       <Example>"Mười lăm phút sau thấy thằng nhỏ bưng một khay có hai cốc rượu bia lên bao lan." (Vũ Trọng Phụng; 15)</Example>
       <Example>"(...) ông cứ ấp a ấp úng mãi khiến ban tổ chức phải lấp lỗ trống bằng cách cho đem rượu bia, bánh trái ra." (Lê Văn Thảo; 12)</Example>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
@@ -6336,7 +6336,7 @@
       <Sense id="vietnet-food-99999989-1" synset="vietnet-food-99999990-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999990-n" ili="">
-      <Definition> các thứ dùng để ăn với cơm, thường là cá, thịt, v.v., nói chung</Definition>
+      <Definition>các thứ dùng để ăn với cơm, thường là cá, thịt, v.v., nói chung</Definition>
       <Example>ăn vã thức ăn</Example>
       <Example>"Bữa cơm có nhiều thức ăn. Hai đứa ăn có vẻ ngon lành lắm." (Anh Đức; 20)</Example>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
@@ -6347,7 +6347,7 @@
       <Sense id="vietnet-food-99999988-1" synset="vietnet-food-99999989-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999989-n" ili="">
-      <Definition> những thức làm thành một bữa ăn [nói tổng quát]</Definition>
+      <Definition>những thức làm thành một bữa ăn [nói tổng quát]</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
     <!-- *******{Lv2. cơm cháo}******** -->
@@ -6356,7 +6356,7 @@
       <Sense id="vietnet-food-99999987-1" synset="vietnet-food-99999988-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999988-n" ili="oewn-07572202-n">
-      <Definition> cái ăn thường ngày như cơm, cháo, v.v. [nói khái quát]</Definition>
+      <Definition>cái ăn thường ngày như cơm, cháo, v.v. [nói khái quát]</Definition>
       <Example>cơm cháo gì chưa?</Example>
       <Example>"Mẹ già hai đứa nuôi chung, Đứa lo cơm cháo, đứa giùm thuốc thang." (Cdao)</Example>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
@@ -6367,7 +6367,7 @@
       <Sense id="vietnet-food-99999986-1" synset="vietnet-food-99999987-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999987-n" ili="">
-      <Definition> cái ăn, cái uống thường ngày [nói khái quát]</Definition>
+      <Definition>cái ăn, cái uống thường ngày [nói khái quát]</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
     <!-- *******{Lv2. cơm gạo}******** -->
@@ -6376,7 +6376,7 @@
       <Sense id="vietnet-food-99999985-1" synset="vietnet-food-99999986-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999986-n" ili="">
-      <Definition> cơm và những thứ tối cần thiết dùng để nuôi sống con người [nói khái quát]</Definition>
+      <Definition>cơm và những thứ tối cần thiết dùng để nuôi sống con người [nói khái quát]</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
     <!-- *******{Lv2. gạo nước}******** -->
@@ -6385,7 +6385,7 @@
       <Sense id="vietnet-food-99999983-1" synset="vietnet-food-99999985-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999985-n" ili="">
-      <Definition> các thức chủ yếu dùng cho bữa ăn hằng ngày [nói khái quát]</Definition>
+      <Definition>các thức chủ yếu dùng cho bữa ăn hằng ngày [nói khái quát]</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
     <!-- *******{Lv2. cơm bữa}******** -->
@@ -6404,7 +6404,7 @@
       <Sense id="vietnet-food-99999984-1" synset="vietnet-food-99999977-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999977-n" ili="">
-      <Definition> bữa cơm thịnh soạn, tỏ lòng quý trọng đối với ai [nói khái quát]</Definition>
+      <Definition>bữa cơm thịnh soạn, tỏ lòng quý trọng đối với ai [nói khái quát]</Definition>
       <Example>thết đãi cơm rượu</Example>
       <Example>Thạch Sanh gánh củi về nhà, Thấy có cơm rượu bày ra sẵn sàng.(TS)</Example>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
@@ -6415,7 +6415,7 @@
       <Sense id="vietnet-food-99999982-1" synset="vietnet-food-99999984-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999984-n" ili="">
-      <Definition> các thứ rau ăn [nói khái quát]</Definition>
+      <Definition>các thứ rau ăn [nói khái quát]</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
     <!-- *******{Lv2. rau cháo}******** -->
@@ -6424,7 +6424,7 @@
       <Sense id="vietnet-food-99999981-1" synset="vietnet-food-77777734-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-77777734-n" ili="">
-      <Definition> thức ăn thường ngày của những người nghèo khổ [nói khái quát]</Definition>
+      <Definition>thức ăn thường ngày của những người nghèo khổ [nói khái quát]</Definition>
       <Example>"Tháng ngày rau cháo xin quanh, Nuôi con mong đợi lớn cành đỡ cây." (TS)</Example>
       <Example>"Hai nhà góp gạo thổi cơm chung, rau cháo no đói có nhau, thân hơn người nhà." (Vũ Trọng Phụng; 4)</Example>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
@@ -6435,7 +6435,7 @@
       <Sense id="vietnet-food-99999980-1" synset="vietnet-food-99999983-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999983-n" ili="">
-      <Definition> thức ăn chỉ có rau và dưa; dùng để nói về cảnh ăn uống rất đạm bạc</Definition>
+      <Definition>thức ăn chỉ có rau và dưa; dùng để nói về cảnh ăn uống rất đạm bạc</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
     <!-- *******{Lv2. dã vị}******** -->
@@ -6444,7 +6444,7 @@
       <Sense id="vietnet-food-99999979-1" synset="vietnet-food-99999982-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999982-n" ili="">
-      <Definition> món ăn đơn giản được chế biến từ những thứ có sẵn ở thôn quê</Definition>
+      <Definition>món ăn đơn giản được chế biến từ những thứ có sẵn ở thôn quê</Definition>
       <Example>canh cua, cà muối, dưa hành là những dã vị mà người Việt Nam nào cũng ưa thích</Example>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
@@ -6454,7 +6454,7 @@
       <Sense id="vietnet-food-99999978-1" synset="vietnet-food-99999981-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999981-n" ili="">
-      <Definition> mắm và muối [nói khái quát]; cũng dùng để ví phần thêm vào câu chuyện kể cho đỡ nhạt nhẽo hoặc cho được đậm đà</Definition>
+      <Definition>mắm và muối [nói khái quát]; cũng dùng để ví phần thêm vào câu chuyện kể cho đỡ nhạt nhẽo hoặc cho được đậm đà</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
     <!-- *******{Lv2. quà bánh}******** -->
@@ -6463,7 +6463,7 @@
       <Sense id="vietnet-food-99999977-1" synset="vietnet-food-99999980-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999980-n" ili="">
-      <Definition> bánh trái để ăn thêm, ngoài bữa chính</Definition>
+      <Definition>bánh trái để ăn thêm, ngoài bữa chính</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
     <!-- *******{Lv2. cao lương mĩ vị, cao lương mỹ vị, mĩ vị, mỹ vị}******** -->
@@ -6484,7 +6484,7 @@
       <Sense id="vietnet-food-99999973-1" synset="vietnet-food-99999979-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999979-n" ili="">
-      <Definition> món ăn ngon và quý [nói khái quát]</Definition>
+      <Definition>món ăn ngon và quý [nói khái quát]</Definition>
       <Example>"Miếng cao lương phong lưu nhưng lợm, Mùi hoắc lê thanh đạm mà ngon." (CO)</Example>
       <Example>sơn hào hải vị</Example>
       <Example>cao lương mĩ vị (tng)</Example>
@@ -6499,7 +6499,7 @@
       <Sense id="vietnet-food-44444400-1" synset="vietnet-food-44444400-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-44444400-n" ili="">
-      <Definition> thức ăn quý, chế biến bằng sản phẩm lấy ở rừng núi</Definition>
+      <Definition>thức ăn quý, chế biến bằng sản phẩm lấy ở rừng núi</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999979-n" />
     </Synset>
     <!-- *******{Lv3. hải vị}******** -->
@@ -6508,7 +6508,7 @@
       <Sense id="vietnet-food-44444401-1" synset="vietnet-food-44444401-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-44444401-n" ili="">
-      <Definition> Thức ăn quý, chế biến từ các sản phẩm lấy ở biển</Definition>
+      <Definition>Thức ăn quý, chế biến từ các sản phẩm lấy ở biển</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999979-n" />
     </Synset>
     <!-- *******{Lv3. cao lương}******** -->
@@ -6517,7 +6517,7 @@
       <Sense id="vietnet-food-44444402-1" synset="vietnet-food-44444402-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-44444402-n" ili="">
-      <Definition> thịt béo và gạo ngon; món ăn ngon [nói khái quát]</Definition>
+      <Definition>thịt béo và gạo ngon; món ăn ngon [nói khái quát]</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999979-n" />
     </Synset>
     <!-- *******{Lv2. thánh thể}******** -->
@@ -6526,7 +6526,7 @@
       <Sense id="vietnet-food-99999972-1" synset="vietnet-food-99999978-n" confidenceScore="1.0"/>
     </LexicalEntry>
     <Synset id="vietnet-food-99999978-n" ili="">
-      <Definition> [thường viết hoa] bánh và rượu nho, tượng trưng cho mình và máu của Chúa Jesus trong lễ Tạ ơn [lễ Thánh Thể] của người theo đạo Kitô</Definition>
+      <Definition>[thường viết hoa] bánh và rượu nho, tượng trưng cho mình và máu của Chúa Jesus trong lễ Tạ ơn [lễ Thánh Thể] của người theo đạo Kitô</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-99999998-n" />
     </Synset>
     <!-- *******{Lv2. cỗ}******** -->
