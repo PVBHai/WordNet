@@ -96,7 +96,7 @@ with col2:
 with col3:
     st.markdown("""
     <div class="info-card">
-        <div class="info-title">💻 HỖ TRỢ KỸ THUẬT (CNTT)</div>
+        <div class="info-title">💻 ĐỒNG THỰC HIỆN (CNTT)</div>
         <div class="info-name">
             Phan Văn Bá Hải<br>
             Đỗ Quốc Trí
