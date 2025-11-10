@@ -2,7 +2,8 @@
 	(1) {thực phẩm} [vietnet-food-00045060-n]: các thứ dùng để chế biến thành món ăn, như thịt, cá, trứng, v.v. [nói khái quát]; phân biệt với lương thực
 		(2) {nông sản, nông phẩm} [vietnet-food-00034540-n]: sản phẩm nông nghiệp, như gạo, thịt, trứng, rau, hoa quả, v.v. [nói khái quát]
 			(3) {súc sản} [vietnet-food-00040488-n]: sản phẩm thịt gia súc
-				(4) {cầy, giò} [vietnet-food-00006363-n]: chó, về mặt để ăn thịt
+				(4) {cầy} [vietnet-food-00006363-n]: chó, về mặt để ăn thịt
+				(4) {giò} [vietnet-food-00018716-n]: cẳng chân gia súc hoặc gia cầm
 				(4) {nạc} [vietnet-food-00030509-n]: thịt không có mỡ
 				(4) {thăn} [vietnet-food-00042705-n]: phần thịt toàn nạc được lọc ra ở phần lưng của súc vật khi mổ thịt
 				(4) {nọng} [vietnet-food-00034330-n]: khoanh thịt cắt ra ở cổ gia súc giết thịt [thường là trâu, bò, lợn]
@@ -57,7 +58,7 @@
 				(4) {ruốc} [vietnet-food-00038909-n]: loại mắm làm từ con ruốc để ngấu
 				(4) {mắm} [vietnet-food-00028823-n]: cá đã ướp muối làm mắm
 					(5) {mắm cái} [vietnet-food-00028825-n]: tên gọi chung các loại mắm cá muối còn nguyên cả con
-					(5) {mắm nêm} [vietnet-food-99999915-n]: loại mắm làm từ con nêm
+					(5) {mắm nêm} [vietnet-food-00028828-n]: mắm thường có màu nâu sẫm, được làm bằng các loại cá nhỏ như cá cơm, cá nục, v.v. để cho thật ngấu mới ăn
 					(5) {bò hóc} [vietnet-food-00003470-n]: mắm làm bằng cá để ươn [một món ăn truyền thống của người Khơ Me]
 		(2) {đồ hộp} [vietnet-food-00015805-n]: thức ăn đóng hộp [nói khái quát]
 		(2) {hàng khô} [vietnet-food-00019634-n]: các thứ hàng thực phẩm khô, để được lâu ngày [như lạc, vừng, miến, hạt tiêu, v.v]., nói chung
@@ -69,7 +70,7 @@
 		(2) {mật} [vietnet-food-00029051-n]: chất có vị ngọt do các tuyến ở đáy một số loài hoa tiết ra
 			(3) {mật ong} [vietnet-food-00029068-n]: chất lỏng, sánh, màu vàng óng, vị ngọt sắc, do ong hút mật làm ra, thường dùng để ăn hoặc làm thuốc
 		(2) {mật} [vietnet-food-00029052-n]: nước mía đã cô đặc
-		(2) {nước cốt} [vietnet-food-00034821-n]: phần nước đậm đặc, tinh tuý nhất do vắt, ép hoặc ngâm, nấu lần đầu mà có
+		(2) {nước cốt} [vietnet-food-00034821-n]: phần nước đậm đặc, tinh túy nhất do vắt, ép hoặc ngâm, nấu lần đầu mà có
 		(2) {nước dùng, nước lèo} [vietnet-food-00034826-n]: nước nấu từ thịt, xương, tôm để chan vào các món ăn như phở, bún, v.v.
 		(2) {nước xuýt, nước xáo} [vietnet-food-00034896-n]: nước luộc thịt, luộc lòng
 		(2) {tóp mỡ} [vietnet-food-00046535-n]: phần còn lại của miếng mỡ lợn [bị tóp lại], sau khi đã rán lấy mỡ
@@ -104,7 +105,7 @@
 				(4) {ớt chỉ thiên, ớt hiểm} [vietnet-food-00035390-n]: ớt quả nhỏ, mọc chỉ thẳng lên, vị rất cay
 				(4) {ớt ngọt} [vietnet-food-00035392-n]: ớt quả to, màu đỏ hoặc xanh lục, không cay, thường dùng để xào
 			(3) {tiêu, hồ tiêu} [vietnet-food-00021358-n]: cây thân leo cùng họ với trầu không, quả nhỏ mọc thành chùm, có vị cay, hương thơm, dùng làm gia vị
-				(4) {tiêu sọ} [vietnet-food-99999902-n]: quả nhỏ, mọc thành chùm, có vị cay, hương thơm, dùng làm gia vị
+				(4) {tiêu sọ} [vietnet-food-00045830-n]: hạt tiêu già đã được tách bỏ lớp vỏ đen
 			(3) {chanh} [vietnet-food-00006527-n]: cây ăn quả cùng họ với cam, quả nhỏ, có nhiều nước, vị chua, thường dùng làm gia vị hay pha nước giải khát
 				(4) {chanh cốm} [vietnet-food-00006529-n]: chanh quả nhỏ, vỏ màu lục đậm
 				(4) {chanh đào} [vietnet-food-00006531-n]: chanh quả to, khi chín ruột có màu hồng
@@ -114,7 +115,7 @@
 			(3) {giấm ớt} [vietnet-food-00018517-n]: giấm và ớt, gia vị nói chung; dùng trong khẩu ngữ để ví cái thêm thắt cho câu chuyện trở nên có ý vị
 			(3) {mẻ} [vietnet-food-00029160-n]: chất chua làm bằng cơm nguội để lên men, dùng làm gia vị khi nấu thức ăn
 			(3) {chao} [vietnet-food-00006552-n]: món ăn làm bằng đậu phụ, để lên men trong dung dịch rượu và muối, có mùi rất đặc biệt
-			(3) {nước chấm} [vietnet-food-00034817-n]: dung dịch mặn, chế biến bằng cách hoà các nguyên liệu có nhiều chất đạm, có thêm gia vị, dùng để chấm thức ăn
+			(3) {nước chấm} [vietnet-food-00034817-n]: dung dịch mặn, chế biến bằng cách hòa các nguyên liệu có nhiều chất đạm, có thêm gia vị, dùng để chấm thức ăn
 			(3) {nước mắm} [vietnet-food-00034859-n]: dung dịch mặn, có vị ngọt đậm, được chế biến từ cá muối, dùng để chấm hoặc nêm thức ăn
 				(4) {nước mắm nhỉ} [vietnet-food-00034860-n]: nước mắm từ thùng cá muối chảy ra từng giọt, loại rất ngon
 				(4) {mắm kem} [vietnet-food-00028826-n]: nước mắm cô đặc
@@ -193,7 +194,7 @@
 			(3) {khóm, thơm, dứa} [vietnet-food-00012912-n]: cây ăn quả, thân ngắn, lá dài, cứng, có gai ở mép và mọc thành cụm ở ngọn thân, quả có nhiều mắt, phía trên có một cụm lá
 			(3) {khổ qua} [vietnet-food-00023727-n]: mướp đắng
 			(3) {mướp} [vietnet-food-00030415-n]: cây trồng thân leo, hoa đơn tính màu vàng, quả dài, dùng làm thức ăn, khi già thì khô thành xơ
-				(4) {mướp hương, mướp tây} [vietnet-food-00030418-n]: mướp quả có vị thơm
+				(4) {mướp hương} [vietnet-food-00030418-n]: mướp quả có vị thơm
 			(3) {mơ} [vietnet-food-00029964-n]: cây ăn quả, lá có răng nhỏ, hoa màu trắng, quả chín màu vàng lục, có lông mịn, vị chua
 				(4) {ô mai} [vietnet-food-00035122-n]: quả mơ ướp đường hoặc muối rồi phơi khô, để ăn hoặc làm thuốc; cũng dùng để chỉ một số loại quả được chế biến theo cách đó
 			(3) {su su} [vietnet-food-00040474-n]: cây thân leo cùng họ với bầu, quả màu lục nhạt, hình quả lê, ngoài mặt có gai mềm, dùng làm thức ăn
@@ -329,7 +330,7 @@
 			(3) {bánh chay} [vietnet-food-00001680-n]: bánh hình tròn, dẹt, làm bằng bột nếp, nhân đậu xanh, luộc chín rồi thả vào nước đường sánh, làm phổ biến vào dịp Tết Hàn Thực [mồng 3 tháng 3 âm lịch]
 			(3) {su sê} [vietnet-food-00040473-n]: bánh làm bằng bột nếp lọc trong và quánh, màu hổ phách, có nhân đường hoặc nhân đậu xanh
 			(3) {bánh khoai} [vietnet-food-00001704-n]: bánh làm bằng khoai lang hoặc khoai sọ thái mỏng, trộn với bột gạo tẻ, nhân đậu xanh và thịt, gói lá, luộc chín
-			(3) {bánh khoai} [vietnet-food-00001705-n]: bánh làm bằng khoai lang hoặc khoai sọ thái mỏng, trộn với bột mì hoà nước, rán vàng
+			(3) {bánh khoai} [vietnet-food-00001705-n]: bánh làm bằng khoai lang thái mỏng, trộn với bột mì hòa nước, rán vàng
 			(3) {bánh cắt} [vietnet-food-00001678-n]: bánh ngọt, nhân hoặc kem kẹp giữa hai lớp bột, nướng chín từng mảng trong lò và cắt thành miếng
 			(3) {bánh gối} [vietnet-food-00001698-n]: bánh nhân thịt, miến, v.v., bọc trong vỏ bột gói giống như cái gối hình bán nguyệt có riềm, đem rán vàng, ăn với nước chấm và rau sống
 			(3) {bánh thánh} [vietnet-food-00001731-n]: bánh do các giáo sĩ Công giáo làm phép rồi phân phát cho con chiên trong những ngày lễ lớn ở nhà thờ
@@ -438,7 +439,7 @@
 		(2) {vây} [vietnet-food-00050974-n]: món ăn làm bằng sợi lấy ở vây một số loài cá biển
 		(2) {yến sào, yến} [vietnet-food-00053690-n]: tổ chim yến, dùng làm món ăn quý
 	(1) {trái cây, hoa quả} [vietnet-food-00020792-n]: quả cây dùng để ăn [nói khái quát]
-		(2) {bơ} [vietnet-food-00004173-n]: cây ăn quả, lá to dài hình xoan hoặc thuôn, hay bầu dục, quả có vỏ và thịt màu xanh lục, khi chín thịt chuyển thành màu vàng nhạt, ăn có vị béo
+		(2) {bơ} [vietnet-food-00004173-n]: cây ăn quả, lá to dài hình xoan hoặc thuôn, hay bầu dục, quả có vỏ và thịt màu xanh lục, khi chín thịt chuyển thành màu vàng nhạt, ăn có vị béo [như bơ]
 		(2) {bùi} [vietnet-food-00004344-n]: trám
 		(2) {bưởi} [vietnet-food-00004653-n]: cây ăn quả, hoa màu trắng thơm, quả tròn và to, gồm nhiều múi có tép mọng nước, vị chua hoặc ngọt
 			(3) {bưởi đào} [vietnet-food-00004654-n]: bưởi có múi và tép màu hồng
@@ -486,9 +487,8 @@
 			(3) {mận hậu} [vietnet-food-00028998-n]: mận có quả màu xanh hoặc tím đỏ, thịt dày, hạt nhỏ, vị ngọt hoặc hơi giôn giốt
 			(3) {mận tam hoa} [vietnet-food-00028999-n]: mận lai đào, quả to hạt nhỏ, khi chín vỏ màu tím nhạt pha xanh, thịt dày, ăn giòn, thơm, có vị ngọt
 		(2) {mít} [vietnet-food-00029520-n]: cây ăn quả thân to, có nhựa mủ, quả lớn, ngoài vỏ có gai, trong chứa nhiều múi có màu vàng khi chín, vị ngọt thơm
-			(3) {mít dai} [vietnet-food-00029522-n]: mít quả có múi ráo, dai, vị thơm ngon
+			(3) {mít dai, mít ráo} [vietnet-food-00029522-n]: mít quả có múi ráo, dai, vị thơm ngon
 			(3) {mít ướt, mít mật} [vietnet-food-00029525-n]: mít quả có múi mềm, nhão, vị ngọt
-			(3) {mít ráo} [vietnet-food-00029526-n]: mít dai
 			(3) {mít tố nữ} [vietnet-food-00029529-n]: mít có quả nhỏ, ra thành chùm sát gốc, hình dáng thon đẹp, gai mịn, múi tròn, vị thơm ngon
 		(2) {nhãn} [vietnet-food-00032785-n]: cây ăn quả, thân to, quả tròn mọc thành chùm, vỏ màu nâu nhạt, hạt đen, cùi trắng, vị ngọt
 			(3) {nhãn cùi} [vietnet-food-00032788-n]: nhãn quả có cùi dày, hạt nhỏ; phân biệt với nhãn nước
