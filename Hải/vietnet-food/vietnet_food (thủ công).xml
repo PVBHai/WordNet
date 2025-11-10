@@ -3776,7 +3776,7 @@
       <Sense id="vietnet-food-00001705-1" synset="vietnet-food-00001705-n" confidenceScore="1.0" />
     </LexicalEntry>
     <Synset id="vietnet-food-00001705-n" ili="">
-      <Definition>bánh làm bằng khoai lang hoặc khoai sọ thái mỏng, trộn với bột mì hoà nước, rán vàng</Definition>
+      <Definition>bánh làm bằng khoai lang thái mỏng, trộn với bột mì hòa nước, rán vàng</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-00001668-n" />
     </Synset>
     
@@ -4985,7 +4985,7 @@
       <Sense id="vietnet-food-00004173-1" synset="vietnet-food-00004173-n" confidenceScore="1.0" />
     </LexicalEntry>
     <Synset id="vietnet-food-00004173-n" ili="">
-      <Definition>cây ăn quả, lá to dài hình xoan hoặc thuôn, hay bầu dục, quả có vỏ và thịt màu xanh lục, khi chín thịt chuyển thành màu vàng nhạt, ăn có vị béo</Definition>
+      <Definition>cây ăn quả, lá to dài hình xoan hoặc thuôn, hay bầu dục, quả có vỏ và thịt màu xanh lục, khi chín thịt chuyển thành màu vàng nhạt, ăn có vị béo [như bơ]</Definition>
       <SynsetRelation relType="hypernym" target="vietnet-food-00020792-n" />
     </Synset>
     
