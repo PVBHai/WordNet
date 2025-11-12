@@ -6052,7 +6052,7 @@
       <SynsetRelation relType="hyponym" target="vietnet-food-00039038-n" />
       <SynsetRelation relType="hyponym" target="vietnet-food-00039039-n" />
       <SynsetRelation relType="hyponym" target="vietnet-food-00039059-n" />
-      <SynsetRelation relType="hyponym" target="vietnet-food-99939059-n" />
+      <SynsetRelation relType="hyponym" target="vietnet-food-00039060-n" />
       <SynsetRelation relType="hyponym" target="vietnet-food-00039042-n" />
       <SynsetRelation relType="hyponym" target="vietnet-food-00039058-n" />
       <SynsetRelation relType="hyponym" target="vietnet-food-00039047-n" />
@@ -6122,17 +6122,17 @@
     
     <LexicalEntry id="vietnet-food-99939040">
       <Lemma writtenForm="rượu chát" partOfSpeech="n" />
-      <Sense id="vietnet-food-99939040-1" synset="vietnet-food-99939059-n" confidenceScore="1.0" />
+      <Sense id="vietnet-food-99939040-1" synset="vietnet-food-00039060-n" confidenceScore="1.0" />
     </LexicalEntry>
     <LexicalEntry id="vietnet-food-44444443">
       <Lemma writtenForm="rượu vang" partOfSpeech="n" />
-      <Sense id="vietnet-food-44444443-1" synset="vietnet-food-99939059-n" confidenceScore="1.0" />
+      <Sense id="vietnet-food-44444443-1" synset="vietnet-food-00039060-n" confidenceScore="1.0" />
     </LexicalEntry>
     <LexicalEntry id="vietnet-food-44444442">
       <Lemma writtenForm="vang" partOfSpeech="n" />
-      <Sense id="vietnet-food-44444442-1" synset="vietnet-food-99939059-n" confidenceScore="1.0" />
+      <Sense id="vietnet-food-44444442-1" synset="vietnet-food-00039060-n" confidenceScore="1.0" />
     </LexicalEntry>
-    <Synset id="vietnet-food-99939059-n" ili="">
+    <Synset id="vietnet-food-00039060-n" ili="">
       <Definition>rượu chế bằng nước của các loại quả ép và để cho lên men</Definition>
       <Example>rượu vang đỏ</Example>
       <Example>rượu vang trắng</Example>
