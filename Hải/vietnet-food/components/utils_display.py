@@ -2,7 +2,7 @@ import json
 import streamlit as st
 
 # Hàm dựng HTML <details> tree
-def render_details_tree(data, level=0):
+def render_details_tree(data, level=0, max_recursive=None):
     html = ""
     indent_px = level * 15
 
@@ -11,11 +11,28 @@ def render_details_tree(data, level=0):
         examples_str = ", ".join(node._example) if isinstance(node._example, list) and node._example else "không có"
         ili_display = node._ili
         
+        # Check if this is a leaf node:
+        # 1. Node at max recursive level (reached search depth limit), OR
+        # 2. Node has no children (actual leaf in the data)
+        is_leaf_node = (max_recursive is not None and node._relative_level == max_recursive - 1) or not has_children
+        
         # New format: (<level>) {<lemmas>} [<synset_id> (<ili>)]: <definition> (vd: <examples>)
         # Styling: lemmas = bold, synset_id = bold+italic, examples = italic, others = normal
         display_text = f"({node._level - 1}) {{<strong>{node._lemmas}</strong>}} [<em>{node._synset.id}</em> ({ili_display})]: <strong>{node._definition}</strong> (vd: <em>{examples_str}</em>)"
 
-        html += f'''
+        # If it's a leaf node, render without <details> tag and without triangle icon
+        if is_leaf_node:
+            html += f'''
+<div class="tree-node leaf-node" style="margin-left:{indent_px}px;">
+    <div class="tree-line"></div>
+    <div class="leaf-content">
+        {display_text}
+    </div>
+</div>
+'''.strip()
+        else:
+            # Regular node with <details> tag
+            html += f'''
 <div class="tree-node" style="margin-left:{indent_px}px;">
     <div class="tree-line"></div>
     <details>
@@ -24,10 +41,10 @@ def render_details_tree(data, level=0):
         </summary>
 '''.strip()
 
-        if has_children:
-            html += render_details_tree(node.children, level + 1)
+            if has_children:
+                html += render_details_tree(node.children, level + 1, max_recursive)
 
-        html += '</details></div>'
+            html += '</details></div>'
 
     return html
 
@@ -72,6 +89,12 @@ def get_tree_view_css():
     .tree-node details[open] > summary::before {
         transform: rotate(90deg);
         content: "▼";
+    }
+    
+    /* Style for leaf nodes - no triangle icon, always visible */
+    .tree-node.leaf-node .leaf-content {
+        padding-left: 5px;
+        font-weight: normal;
     }
 
     .node-extra {

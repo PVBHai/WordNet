@@ -124,6 +124,25 @@ word = st.text_input("🔍 Nhập từ cần tìm:", disabled=show_all)
 # Initialize lexicon
 lexicon = wn.Wordnet('vietnet-food:1.0')
 
+# Try to load English WordNet (OEWN) for English lemma search
+try:
+    # Check if OEWN is available
+    oewn_lexicons = [lex for lex in wn.lexicons() if 'oewn' in lex.id.lower()]
+    if not oewn_lexicons:
+        # Try to download OEWN if not available
+        try:
+            with st.spinner('⏳ Đang tải English WordNet (OEWN)...'):
+                wn.download('oewn:2024')
+        except Exception as download_error:
+            pass
+    
+    # Load OEWN lexicon
+    oewn = wn.Wordnet('oewn:2024')
+    oewn_available = True
+except Exception as e:
+    oewn = None
+    oewn_available = False
+
 if show_all:
     # Get all root synsets (synsets with no hypernyms)
     all_synsets = list(lexicon.synsets())
@@ -135,7 +154,7 @@ if show_all:
         if view_mode == 'Dạng chữ':
             st.subheader("🌲 Dạng chữ (Tree View) - Toàn bộ dữ liệu")
             st.markdown(get_tree_view_css(), unsafe_allow_html=True)
-            html = render_details_tree(families.nodes)
+            html = render_details_tree(families.nodes, max_recursive=max_recursive)
             st.markdown(html, unsafe_allow_html=True)
         else:
             st.subheader("📊 Dạng biểu đồ (Graph View) - Toàn bộ dữ liệu")
@@ -145,11 +164,88 @@ if show_all:
         st.warning("⚠️ Không tìm thấy node gốc trong dữ liệu!")
 
 elif word:
-    synsets = lexicon.synsets(word)
+    synsets = []
+    
+    # Try searching by synset_id first
+    try:
+        synset = lexicon.synset(word)
+        if synset:
+            synsets = [synset]
+    except:
+        pass
+    
+    # If not found by synset_id, try searching by exact lemma match (Vietnamese)
+    if not synsets:
+        synsets = lexicon.synsets(word)
+    
+    # If still not found, try searching by ILI (Inter-Lingual Index)
+    if not synsets:
+        all_synsets = list(lexicon.synsets())
+        for syn in all_synsets:
+            if syn.ili and syn.ili.id == word:
+                synsets.append(syn)
+    
+    # If still not found and OEWN is available, try searching by English lemma
+    if not synsets and oewn_available:
+        try:
+            # Search for English lemma in OEWN
+            english_synsets = oewn.synsets(word)
+            
+            if english_synsets:
+                # Get synset IDs from OEWN (VietNet stores OEWN synset IDs, not ILI IDs)
+                oewn_synset_ids = set()
+                for en_syn in english_synsets:
+                    oewn_synset_ids.add(en_syn.id)
+                
+                # Search VietNet synsets with matching ILI (which contains OEWN synset ID)
+                if oewn_synset_ids:
+                    all_vnnet_synsets = list(lexicon.synsets())
+                    for syn in all_vnnet_synsets:
+                        # VietNet ILI stores OEWN synset ID
+                        if syn.ili and syn.ili.id in oewn_synset_ids:
+                            synsets.append(syn)
+                    
+                    if synsets:
+                        # Show info about English to Vietnamese mapping
+                        st.success(f"🌍 Tìm thấy từ tiếng Anh **'{word}'** → {len(synsets)} synset(s) tương ứng trong VietNet")
+                    else:
+                        st.info(f"💡 Tìm thấy '{word}' trong English WordNet nhưng chưa có bản dịch tiếng Việt tương ứng")
+        except Exception as e:
+            # Silently fail if OEWN search fails
+            pass
 
     if not synsets:
-        st.text('Từ bạn tìm không tồn tại !!!')
-        pass
+        # Not found - show suggestions instead of displaying all nodes with partial matches
+        st.warning(f'⚠️ Không tìm thấy từ chính xác: **"{word}"**')
+        
+        # Find similar words (containing the search string)
+        all_synsets = list(lexicon.synsets())
+        suggestions = set()  # Use set to avoid duplicates
+        
+        for syn in all_synsets:
+            lemmas = syn.lemmas()
+            for lemma in lemmas:
+                # Check if lemma contains the search word (case-insensitive partial match)
+                if word.lower() in lemma.lower():
+                    suggestions.add(lemma)
+        
+        if suggestions:
+            st.info(f"💡 **Gợi ý các từ liên quan** ({len(suggestions)} từ):")
+            
+            # Sort suggestions alphabetically
+            sorted_suggestions = sorted(list(suggestions))
+            
+            # Display suggestions in columns for better layout
+            cols_per_row = 4
+            for i in range(0, len(sorted_suggestions), cols_per_row):
+                cols = st.columns(cols_per_row)
+                for j, col in enumerate(cols):
+                    if i + j < len(sorted_suggestions):
+                        suggestion = sorted_suggestions[i + j]
+                        # Make suggestions clickable-looking with markdown
+                        col.markdown(f"• **{suggestion}**")
+        else:
+            st.error('❌ Không tìm thấy từ nào liên quan!')
 
     else:
         families = NodeFamily(synsets, relationship_type, max_recursive)
@@ -157,11 +253,19 @@ elif word:
         if view_mode == 'Dạng chữ':
             st.subheader("🌲 Dạng chữ (Tree View)")
             st.markdown(get_tree_view_css(), unsafe_allow_html=True)
-            html = render_details_tree(families.nodes)
+            html = render_details_tree(families.nodes, max_recursive=max_recursive)
             st.markdown(html, unsafe_allow_html=True)
 
         else:
             st.subheader("📊 Dạng biểu đồ (Graph View)")
             elements = nodefamily_to_cytoscape_elements(families.nodes)
             render_cytoscape(elements)
-            
+
+# Footer with publication date
+st.markdown("---")
+st.markdown("""
+<div style="text-align: right; color: #666; font-size: 0.9em; padding: 10px 0;">
+    📅 Ngày xuất bản: 08/11/2025
+</div>
+""", unsafe_allow_html=True)
+

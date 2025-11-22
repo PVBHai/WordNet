@@ -17,7 +17,7 @@ class NodeFamily:
         for syn in synsets:
             # Calculate absolute level from the root of the tree
             absolute_level = get_depth_from_root(syn)
-            node = Node(syn, absolute_level)
+            node = Node(syn, absolute_level, relative_level)
             children_synsets = get_relationships(syn, self.relationship_type)
             node.children = self._build_tree(children_synsets, relative_level + 1)
             node_list.append(node)
