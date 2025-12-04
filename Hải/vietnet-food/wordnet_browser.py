@@ -119,7 +119,46 @@ with col3:
     view_mode = st.radio("👁️ Chế độ hiển thị:", ['Dạng chữ', 'Dạng đồ thị'], horizontal=True)
 
 # Thanh nhập từ (disabled if show_all is checked)
-word = st.text_input("🔍 Nhập từ cần tìm:", disabled=show_all)
+word_raw = st.text_input("🔍 Nhập từ cần tìm:", disabled=show_all)
+
+# Function to clean and normalize input
+def clean_input(text):
+    """
+    Clean and normalize user input:
+    - Remove leading/trailing whitespace
+    - Replace multiple spaces with single space
+    - Remove special characters that might cause issues
+    - Normalize Unicode characters
+    """
+    if not text:
+        return ""
+    
+    import re
+    import unicodedata
+    
+    # Normalize Unicode (NFC normalization for Vietnamese characters)
+    text = unicodedata.normalize('NFC', text)
+    
+    # Remove leading/trailing whitespace (first pass)
+    text = text.strip()
+    
+    # Replace multiple spaces/tabs/newlines with single space
+    text = re.sub(r'\s+', ' ', text)
+    
+    # Remove control characters and other non-printable characters
+    # but keep Vietnamese characters, letters, numbers, hyphens, and underscores
+    text = re.sub(r'[^\w\s\-]', '', text, flags=re.UNICODE)
+    
+    # Strip again after removing special characters (second pass)
+    text = text.strip()
+    
+    # Remove any remaining multiple spaces
+    text = re.sub(r'\s+', ' ', text)
+    
+    return text
+
+# Clean the input
+word = clean_input(word_raw)
 
 # Initialize lexicon
 lexicon = wn.Wordnet('vietnet-food:1.0')
@@ -261,11 +300,27 @@ elif word:
             elements = nodefamily_to_cytoscape_elements(families.nodes)
             render_cytoscape(elements)
 
-# Footer with publication date
+# Footer with copyright and citation information
 st.markdown("---")
 st.markdown("""
-<div style="text-align: right; color: #666; font-size: 0.9em; padding: 10px 0;">
-    📅 Ngày xuất bản: 08/11/2025
+<div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 30px;">
+    <div style="color: #333; font-size: 0.95em; line-height: 1.8;">
+        <p style="margin-bottom: 15px;">
+            <strong>📅 Hệ thống được hoàn thành:</strong> 08/11/2025
+        </p>
+        <p style="margin-bottom: 15px;">
+            <strong>©️ Bản quyền:</strong> Trung tâm Ngôn ngữ học Tính toán, Trường Đại học Khoa học Tự nhiên – ĐHQG HCM.
+        </p>
+        <p style="margin-bottom: 0; padding: 15px; background-color: #fff; border-left: 4px solid #4A90E2; border-radius: 5px;">
+            <strong>📖 Nguồn trích dẫn:</strong><br>
+            <span style="color: #555; display: block; margin-left: 2em; margin-top: 8px;">
+                Phan Thị Mỹ Trang, Phan Văn Bá Hải, Đỗ Quốc Trí, Đinh Điền &amp; Trần Thị Minh Phượng (2025, ngày 08 tháng 11). 
+                <em>Trình tra cứu VietNet: Hệ thống nhãn ngữ nghĩa mục từ danh từ trên nhánh &quot;thức ăn&quot;</em>. 
+                Trung tâm Ngôn ngữ học Tính toán, Trường ĐH Khoa học Tự nhiên – ĐH Quốc gia Tp.HCM. 
+                <a href="https://vietnet-food.streamlit.app/" target="_blank" style="color: #4A90E2; text-decoration: none;">https://vietnet-food.streamlit.app/</a>
+            </span>
+        </p>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 

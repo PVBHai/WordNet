@@ -20,13 +20,13 @@ def render_details_tree(data, level=0, max_recursive=None):
         # Styling: lemmas = bold, synset_id = bold+italic, examples = italic, others = normal
         display_text = f"({node._level - 1}) {{<strong>{node._lemmas}</strong>}} [<em>{node._synset.id}</em> ({ili_display})]: <strong>{node._definition}</strong> (vd: <em>{examples_str}</em>)"
 
-        # If it's a leaf node, render without <details> tag and without triangle icon
+        # If it's a leaf node, render without <details> tag but with placeholder for alignment
         if is_leaf_node:
             html += f'''
 <div class="tree-node leaf-node" style="margin-left:{indent_px}px;">
     <div class="tree-line"></div>
     <div class="leaf-content">
-        {display_text}
+        <span class="leaf-placeholder">▶</span>{display_text}
     </div>
 </div>
 '''.strip()
@@ -91,10 +91,20 @@ def get_tree_view_css():
         content: "▼";
     }
     
-    /* Style for leaf nodes - no triangle icon, always visible */
+    /* Style for leaf nodes - placeholder triangle for alignment */
     .tree-node.leaf-node .leaf-content {
-        padding-left: 5px;
+        padding-left: 0px;
         font-weight: normal;
+    }
+    
+    .tree-node.leaf-node .leaf-placeholder {
+        display: inline-block;
+        margin-right: 5px;
+        margin-left: 5px;
+        opacity: 0;
+        width: 0.7em;
+        text-align: center;
+        /* Match exact properties of the real triangle for perfect alignment */
     }
 
     .node-extra {
