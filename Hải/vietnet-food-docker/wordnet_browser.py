@@ -314,7 +314,7 @@ st.markdown("""
         <p style="margin-bottom: 0; padding: 15px; background-color: #fff; border-left: 4px solid #4A90E2; border-radius: 5px;">
             <strong>📖 Nguồn trích dẫn:</strong><br>
             <span style="color: #555; display: block; margin-left: 2em; margin-top: 8px;">
-                Phan Thị Mỹ Trang, Phan Văn Bá Hải, Đỗ Quốc Trí, Đinh Điền &amp; Trần Thị Minh Phượng (ngày 08 tháng 11 năm 2025). 
+                Phan Thị Mỹ Trang, Phan Văn Bá Hải, Đỗ Quốc Trí, Đinh Điền &amp; Trần Thị Minh Phượng (2025, ngày 08 tháng 11). 
                 <em>Trình tra cứu VietNet: Hệ thống nhãn ngữ nghĩa mục từ danh từ trên nhánh &quot;thức ăn&quot;</em>. 
                 Trung tâm Ngôn ngữ học Tính toán, Trường ĐH Khoa học Tự nhiên – ĐH Quốc gia Tp.HCM. 
                 <a href="https://vietnet-food.streamlit.app/" target="_blank" style="color: #4A90E2; text-decoration: none;">https://vietnet-food.streamlit.app/</a>
