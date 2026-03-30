@@ -8,7 +8,6 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
-    software-properties-common \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the requirements file into the container
@@ -21,7 +20,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose the port Streamlit runs on
-EXPOSE 8501
+# EXPOSE 8501
 
-# Run the application
-ENTRYPOINT ["streamlit", "run", "wordnet_browser.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# # Run the application
+# ENTRYPOINT ["streamlit", "run", "wordnet_browser.py", "--server.port=8501", "--server.address=0.0.0.0"]
+RUN pip freeze
+EXPOSE 86
+ENTRYPOINT ["streamlit", "run", "wordnet_browser.py", "--server.port=86", "--server.address=0.0.0.0"]

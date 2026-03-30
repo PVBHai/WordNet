@@ -5,7 +5,8 @@ class Node:
         self._lemmas = ', '.join(lemma for lemma in synset.lemmas())
         self._definition = synset.definition()
         self._example = synset.examples()
-        self._ili = synset.ili.id if synset.ili else ''
+        # self._ili = synset.ili.id if synset.ili else ''
+        self._ili = synset.ili.id if hasattr(synset.ili, "id") else (synset.ili or "")
         self._level = recursive_level  # Absolute level from root
         self._relative_level = relative_level  # Relative level in search tree
         self._children = []
