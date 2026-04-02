@@ -241,8 +241,14 @@ elif word:
                     all_vnnet_synsets = list(lexicon.synsets())
                     for syn in all_vnnet_synsets:
                         # VietNet ILI stores OEWN synset ID
-                        if syn.ili and syn.ili.id in oewn_synset_ids:
-                            synsets.append(syn)
+                        if syn.ili:
+                            if hasattr(syn.ili, "id"):
+                                ili_id = syn.ili.id
+                            else:
+                                ili_id = syn.ili
+
+                            if ili_id == word:
+                                synsets.append(syn)
                     
                     if synsets:
                         # Show info about English to Vietnamese mapping
