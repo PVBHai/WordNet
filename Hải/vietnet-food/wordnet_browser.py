@@ -221,8 +221,10 @@ elif word:
     if not synsets:
         all_synsets = list(lexicon.synsets())
         for syn in all_synsets:
-            if syn.ili and syn.ili.id == word:
-                synsets.append(syn)
+            if syn.ili:
+                ili_id = syn.ili.id if hasattr(syn.ili, "id") else syn.ili
+                if ili_id == word:
+                    synsets.append(syn)
     
     # If still not found and OEWN is available, try searching by English lemma
     if not synsets and oewn_available:
