@@ -1,3 +1,6 @@
+# Application version
+APP_VERSION = "v1.0"
+
 # Streamlit
 import streamlit as st
 
@@ -67,7 +70,7 @@ st.markdown("""
 
 # Main Title
 st.markdown('<div class="big-title">🌐 Trình tra cứu VietNet</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">HỆ THỐNG NHÃN NGỮ NGHĨA MỤC TỪ DANH TỪ TRÊN NHÁNH "THỨC ĂN"</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">HỆ THỐNG NHÃN NGỮ NGHĨA MỤC TỪ DANH TỪ TRÊN TRƯỜNG NGHĨA "THỨC ĂN"</div>', unsafe_allow_html=True)
 
 # Information Cards
 col1, col2, col3 = st.columns(3)
@@ -310,7 +313,7 @@ elif word:
 
 # Footer with copyright and citation information
 st.markdown("---")
-st.markdown("""
+st.markdown(f"""
 <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 30px;">
     <div style="color: #333; font-size: 0.95em; line-height: 1.8;">
         <p style="margin-bottom: 15px;">
@@ -319,14 +322,26 @@ st.markdown("""
         <p style="margin-bottom: 15px;">
             <strong>©️ Bản quyền:</strong> Trung tâm Ngôn ngữ học Tính toán, Trường Đại học Khoa học Tự nhiên – ĐHQG HCM.
         </p>
-        <p style="margin-bottom: 0; padding: 15px; background-color: #fff; border-left: 4px solid #4A90E2; border-radius: 5px;">
+        <p style="margin-bottom: 15px; padding: 15px; background-color: #fff; border-left: 4px solid #4A90E2; border-radius: 5px;">
             <strong>📖 Nguồn trích dẫn:</strong><br>
             <span style="color: #555; display: block; margin-left: 2em; margin-top: 8px;">
                 Phan Thị Mỹ Trang, Phan Văn Bá Hải, Đỗ Quốc Trí, Đinh Điền &amp; Trần Thị Minh Phượng (ngày 08 tháng 11 năm 2025). 
-                <em>Trình tra cứu VietNet: Hệ thống nhãn ngữ nghĩa mục từ danh từ trên nhánh &quot;thức ăn&quot;</em>. 
+                <em>Trình tra cứu VietNet: Hệ thống nhãn ngữ nghĩa mục từ danh từ trên trường nghĩa &quot;thức ăn&quot;</em>. 
                 Trung tâm Ngôn ngữ học Tính toán, Trường ĐH Khoa học Tự nhiên – ĐH Quốc gia Tp.HCM. 
                 <a href="https://vietnet-food.streamlit.app/" target="_blank" style="color: #4A90E2; text-decoration: none;">https://vietnet-food.streamlit.app/</a>
             </span>
+        </p>
+        <p style="margin-bottom: 0; text-align: right;">
+            <span style="
+                display: inline-block;
+                background-color: #667eea;
+                color: white;
+                font-size: 0.8em;
+                font-weight: 600;
+                padding: 3px 10px;
+                border-radius: 12px;
+                letter-spacing: 0.05em;
+            ">VietNet Food {APP_VERSION}</span>
         </p>
     </div>
 </div>
