@@ -27,7 +27,7 @@ def get_relationships(synset, relationship_type):
     elif relationship_type == 'hyponym':
         return synset.hyponyms()
     elif relationship_type == 'meronym':
-        return synset.part_meronyms() + synset.substance_meronyms()
+        return synset.get_related('mero_part', 'mero_substance')
     elif relationship_type == 'holonym':
-        return synset.part_holonyms() + synset.substance_holonyms()
+        return synset.get_related('holo_part', 'holo_substance')
     return []
