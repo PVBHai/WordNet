@@ -1,2 +1,6 @@
 data/
 *.tar
+.DS_Store
+
+# Dumb files
+stats_output/
